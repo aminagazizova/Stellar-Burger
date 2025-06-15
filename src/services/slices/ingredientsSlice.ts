@@ -31,6 +31,11 @@ const ingredientsSlice = createSlice({
   name: 'ingredients',
   initialState,
   reducers: {},
+  selectors: {
+    selectIngredients: (state) => state.data,
+    selectLoading: (state) => state.loading,
+    selectError: (state) => state.error
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchIngredients.pending, (state) => {
@@ -48,4 +53,7 @@ const ingredientsSlice = createSlice({
   }
 });
 
+// Экспортируем селекторы
+export const { selectIngredients, selectLoading, selectError } =
+  ingredientsSlice.selectors;
 export default ingredientsSlice.reducer;
